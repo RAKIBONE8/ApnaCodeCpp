@@ -1,75 +1,78 @@
 #include<iostream>
 using namespace std;
-#define n 20
+
+class node
+{
+public:
+    int data;
+    node* next;
+
+    node(int val)
+    {
+        data=val;
+        next=NULL;
+    }
+};
 
 class queue
 {
-    int*arr;
-    int front;
-    int back;
+    node* front;
+    node* back;
 
     public:
+
     queue()
     {
-        arr=new int[n];
-        front = -1;
-        back = -1;
+        front = NULL;
+        back = NULL;
     }
 
     void push(int x)
     {
-        if(back==n-1)
+        node* n = new node(x);
+        if(front == NULL)
         {
-            cout<<"Queue overflow"<<endl;
+            back = n;
+            front = n;
             return;
         }
-        back++;
-        arr[back]=x;
-
-        if(front==-1)
-        {
-            front++;
-        }
+        back->next = n;
+        back = n;
     }
-
     void pop()
     {
-        if(front==-1||front>back)
+        if(front == NULL)
         {
-            cout<<"No element in queue"<<endl;
+            cout<<"Queue underflow"<<endl;
             return;
         }
-        front++;
+        node* todelete = front;
+        front = front->next;
+        delete todelete;
     }
-
     int peek()
     {
-        if(front==-1||front>back)
+        if(front == NULL)
         {
-           cout<<"Empty Queue"<<endl;
-           return -1;
+            cout<<"No element in queue"<<endl;
+            return -1;
         }
-
-        return arr[front];
-
+        return front->data;
     }
 
     bool empty()
     {
-        if(front==-1 || front>back)
-        {   
-            cout<<"Empty Queue"<<endl;
+        if(front == NULL)
+        {
             return true;
         }
         return false;
     }
-
-
 };
 
 int main ()
 {
-   queue q;
+    queue q;
 
    q.push(1);
    q.push(2);
@@ -79,8 +82,10 @@ int main ()
 
    while(!q.empty())
    {
-     cout<<q.peek()<<endl;
-     q.pop();
+      cout<<q.peek()<<endl;
+      q.pop();
    }
-   cout<<q.empty();
+
+
+
 }
