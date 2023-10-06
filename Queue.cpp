@@ -1,4 +1,5 @@
 // Linked list implimentation
+/*
 #include<iostream>
 using namespace std;
 
@@ -89,4 +90,83 @@ int main ()
 
 
 
+}
+*/
+
+#include<iostream>
+#include<stack>
+using namespace std;
+
+class queue
+{
+   stack<int>st1;
+   stack<int>st2;
+
+   public:
+
+   void push(int x)
+   {
+       st1.push(x);
+   }
+   void pop()
+   {
+       if(st1.empty() && st2.empty())
+       {
+           cout<<"Empty queue"<<endl;
+           return;
+       }
+       if(st2.empty())
+       {
+           while(!st1.empty())
+           {
+             st2.push(st1.top());
+             st1.pop();
+           }
+       }
+       st2.pop();
+   }
+   int top()
+   {
+       if(st1.empty() && st2.empty())
+       {
+           cout<<"empty queue"<<endl;
+           return -1;
+       }
+       if(st2.empty())
+       {
+           while(!st1.empty())
+           {
+             st2.push(st1.top());
+             st1.pop();
+           }
+       }
+       return st2.top();
+   }
+   bool empty()
+   {
+        if(st1.empty() && st2.empty())
+        {
+          return true;
+        }
+        return false;
+   }
+};
+
+int main ()
+{
+   queue q;
+
+   q.push(1);
+   q.push(2);
+   q.push(3);
+
+   cout << "Front of queue: " << q.top() << endl;
+
+   q.pop();
+   cout << "Front of queue after pop: " << q.top() << endl;
+
+   q.pop();
+   q.pop();
+  
+    
 }
