@@ -141,6 +141,7 @@ int main ()
 */
 
 // Print inverted pyramid using number - 2
+
 /*
 int main ()
 {
@@ -153,11 +154,12 @@ int main ()
         for(int j=1;j<=i;j++)
         {
             cout<<k<<" ";
-            
+
         }
         k++;
         cout<<endl;
     }
+    return 0;
 }
 */
 
@@ -614,6 +616,7 @@ int main ()
 }
 */
 
+/*
 int main ()
 {
     int n;
@@ -636,3 +639,28 @@ int main ()
         cout<<endl;
     }
 }
+*/
+
+// Pyramid
+
+/*
+int main ()
+{
+    int n;
+    cin>>n;
+
+    for(int i=1;i<=n;i++)
+    {
+        for(int j = 1;j<=n-i;j++)
+        {
+            cout<<" ";
+        }
+        for(int j = 1;j<=i;j++)
+        {
+            cout<<"*"<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
+*/
